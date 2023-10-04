@@ -7,12 +7,20 @@ import {API} from "./global";
 export function ContentDetails() {
   const { id } = useParams();
 
-  const [content, SetContent] = useState([]);
-  useEffect(()=>{
-    fetch(`${API}cms/${id}`)
-    .then((data) => data.json())
-    .then((cms) => SetContent(cms));
-  },[]);
+  const [content, setContent] = useState([]);
+  // useEffect(()=>{
+  //   fetch(`${API}cms/${id}`)
+  //   // .then((data) => data.json())
+  //   console.log(data)
+  //   .then((cms) => SetContent(cms));
+  //   },[]);
+ console.log(API);
+    useEffect(() => {
+      fetch(`${API}/cms/${id}`)
+        .then((response) => response.json()) // Parse the response as JSON
+        .then((cms) => setContent(cms)) // Update the content state
+        .catch((error) => console.error(error)); // Handle any errors
+    }, [API, id]);
  
   console.log(content);
   const navigate = useNavigate();
@@ -32,8 +40,8 @@ export function ContentDetails() {
           <h3>{content.creation}</h3>
           <h2>Other usage and Functions</h2>
           <h3>{content.otherusage}</h3>
-          <Button onClick={() => navigate(-1)}>back</Button>
-          <button onClick={()=> deletecontent()}>Delete</button>
+          <Button className='btn' onClick={() => navigate(-1)}>back</Button>
+          <Button className='btn'  onClick={()=> deletecontent()}>Delete</Button>
         </div>
       </div>
     </Card>

@@ -105,7 +105,7 @@ function App() {
         .then((cms) => setContentList(cms));
       },[]);
       const navigate = useNavigate(); 
-      const[mode, setMode] = useState("dark");
+      const[mode, setMode] = useState("light");
       const darkTheme = createTheme({
         palette: {
           mode: mode,
@@ -133,7 +133,7 @@ function App() {
           </div>
           <Button onClick={() => setMode(mode === "dark" ? "light" : "dark")} 
           color="inherit" startIcon={mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}>
-            {mode === "dark" ? "light" : "dark"}  mode
+            {mode === "light" ? "dark" : "light"}  mode
           </Button>
          </Toolbar>
       </AppBar>
