@@ -6,6 +6,7 @@ import Card from '@mui/material/Card';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { Counter } from './Counter';
+import {API} from "./global";
 
 
 
